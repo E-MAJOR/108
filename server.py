@@ -52,12 +52,12 @@ def get_cheapest():
     cheapest = catalog[0]
     for product in catalog:
         print(product["price"])
-        if cheapest > product["price"]:
+        if cheapest["price"] > product["price"]:
             cheapest = product
     return json.dumps(cheapest)
 
 @app.route("/api/product/<id>") #<id> is a variable, that you fill in with the _id number from the catalog, it will find the product and return it
-def get_product():
+def get_product(id):
     for product in catalog:
         if product["_id"] == id:
             return json.dumps(product)
